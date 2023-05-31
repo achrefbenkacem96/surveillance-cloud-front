@@ -8,8 +8,6 @@ import FormLayout from './pages/Form/FormLayout'
 import Tables from './pages/Tables'
 import Settings from './pages/Settings'
 import Chart from './pages/Chart'
-import Alerts from './pages/UiElements/Alerts'
-import Buttons from './pages/UiElements/Buttons'
 import SignIn from './pages/Authentication/SignIn'
 import SignUp from './pages/Authentication/SignUp'
 import PrivateRoute from './PrivateRoute';
@@ -20,6 +18,7 @@ const App = () => {
 
   // Check if user is authenticated, e.g. by checking if a token is present in local storage
   useEffect(() => {
+
     const token = localStorage.getItem('token')
     setIsAuthenticated(token != null)
   }, [])
@@ -51,8 +50,6 @@ const App = () => {
               <Route path='/tables' element={<Tables />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/chart' element={<Chart />} />
-              <Route path='/ui/alerts' element={<Alerts />} />
-              <Route path='/ui/buttons' element={<Buttons />} />
           </Route>
           {/* <Route path='/auth/signup' element={<SignUp />} /> */}
         </Routes>

@@ -4,8 +4,27 @@ import Breadcrumb from '../../components/Breadcrumb';
 import Logo from '../../images/logo/logo.svg'
 import LogoDark from '../../images/logo/logo-dark.svg'
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import axios from 'axios';
+import FormData from 'form-data';
 
 const SignIn = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [message, setMessage] = useState();
+  const hundleSubmit = async()=>{
+  let data = new FormData();
+  data.append('password', password);
+  data.append('email', email);
+    const response = await axios.post("http://127.0.0.1:5000/login",data)
+    console.log("🚀 ~ file: SignIn.jsx:15 ~ hundleSubmit ~ response:", response.data)
+    if (response.data.status = "success") {
+      localStorage.setItem("token", true);
+      window.location.href = "/"
+    }else{
+      setMessage(response.data.message)
+    }
+  }
   return (
     <>
     <div className='dark:bg-boxdark-2 dark:text-bodydark'>
@@ -161,6 +180,7 @@ const SignIn = () => {
                   <div className='relative'>
                     <input
                       type='email'
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder='Enter your email'
                       className='w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
                     />
@@ -192,6 +212,7 @@ const SignIn = () => {
                   <div className='relative'>
                     <input
                       type='password'
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder='6+ Characters, 1 Capital letter'
                       className='w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary'
                     />
@@ -222,7 +243,8 @@ const SignIn = () => {
 
                 <div className='mb-5'>
                   <input
-                    type='submit'
+                    onClick={hundleSubmit}
+                    type='button'
                     value='Sign In'
                     className='w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90'
                   />
