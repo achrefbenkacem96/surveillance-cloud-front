@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import Analytics from './pages/Dashboard/Analytics'
+import VMS from './pages/Dashboard/VMS'
 import Calendar from './pages/Calendar'
 import Profile from './pages/Profile'
+import Buttons from './pages/UiElements/Buttons'
+import Alerts from './pages/UiElements/Alerts'
 import FormElements from './pages/Form/FormElements'
 import FormLayout from './pages/Form/FormLayout'
 import Tables from './pages/Tables'
@@ -42,7 +44,10 @@ const App = () => {
         <Routes>
           <Route path='/auth/signin' element={<SignIn />} />
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}  >
-              <Route exact path='/' element={<Analytics />} />
+              <Route exact path='/' element={<VMS />} />
+              <Route exact path='/vcenter/lists' element={<VMS />} />
+              <Route exact path='/proxmox/lists' element={<VMS />} />
+              <Route exact path='/vms/lists/all' element={<VMS />} />
               <Route path='/calendar' element={<Calendar />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/forms/form-elements' element={<FormElements />} />
@@ -50,6 +55,8 @@ const App = () => {
               <Route path='/tables' element={<Tables />} />
               <Route path='/settings' element={<Settings />} />
               <Route path='/chart' element={<Chart />} />
+              <Route path='/ui/buttons' element={<Buttons />} />
+              <Route path='/ui/Alerts' element={<Alerts />} />
           </Route>
           {/* <Route path='/auth/signup' element={<SignUp />} /> */}
         </Routes>
