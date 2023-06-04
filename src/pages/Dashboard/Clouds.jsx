@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DefaultLayout from '../../layout/DefaultLayout';
 import CardOne from '../../components/CardOne';
 import CardTwo from '../../components/CardTwo';
@@ -12,26 +12,10 @@ import ChartThree from '../../components/ChartThree';
 import MapOne from '../../components/MapOne'
 import TableThree from '../../components/TableThree';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
-const VMS = () => {
-  const location = useLocation()
-  const { pathname } = location
-  useEffect(()=>{
-    console.log("🚀 ~ file: VMS.jsx:21 ~ useEffect ~ pathname:", pathname)
-    switch (pathname) {
-      case "/vms/lists/all":
-        
-        break;
-      case "/proxmox/lists":
-        
-        break;
-      case "/vcenter/lists":
-        
-        break;
-    
-      
-    }
-  })
+const Clouds = () => {
+ 
   return (
     <DefaultLayout>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5'>
@@ -46,8 +30,9 @@ const VMS = () => {
         <ChartTwo />
         <ChartThree />
         <MapOne /> */}
-        <div className='col-span-12 xl:col-span-8'>
-          <TableThree />
+        <div className='container'>
+    
+          <TableThree   />
         </div>
         
         {/* <ChatCard /> */}
@@ -56,4 +41,4 @@ const VMS = () => {
   )
 }
 
-export default VMS;
+export default Clouds;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import VMS from './pages/Dashboard/VMS'
+import Clouds from './pages/Dashboard/Clouds'
 import Calendar from './pages/Calendar'
 import Profile from './pages/Profile'
 import Buttons from './pages/UiElements/Buttons'
@@ -44,10 +44,10 @@ const App = () => {
         <Routes>
           <Route path='/auth/signin' element={<SignIn />} />
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}  >
-              <Route exact path='/' element={<VMS />} />
-              <Route exact path='/vcenter/lists' element={<VMS />} />
-              <Route exact path='/proxmox/lists' element={<VMS />} />
-              <Route exact path='/vms/lists/all' element={<VMS />} />
+              <Route exact path='/' element={<Clouds />} />
+              <Route exact path='/clouds/vcenter' element={<Clouds />} />
+              <Route exact path='/clouds/proxmox' element={<Clouds />} />
+              <Route exact path='/clouds/all' element={<Clouds />} />
               <Route path='/calendar' element={<Calendar />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/forms/form-elements' element={<FormElements />} />
